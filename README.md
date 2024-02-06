@@ -12,3 +12,5 @@
 2. Zustand + TanStackQuery
 3. Tailwind CSS
 4. React-Router-Dom
+
+[App deployed on Vercel](https://hex-test.vercel.app/)
