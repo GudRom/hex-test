@@ -10,9 +10,13 @@ const Table = () => {
     useLinkStore();
 
   const request = new URLSearchParams({
-    offset: currentPage.toString(),
+    offset: (currentPage * LIMIT_PER_PAGE).toString(),
     limit: LIMIT_PER_PAGE.toString(),
   });
+
+  const totalCount = localStorage.getItem("totalCount") ?? 1;
+
+  const maxPage = Math.floor(+totalCount / LIMIT_PER_PAGE);
 
   [short, counter, target].forEach((el) => {
     if (el) {
@@ -40,7 +44,9 @@ const Table = () => {
               Назад
             </Button>
             <span className="m-2">{currentPage + 1}</span>
-            <Button onClick={increasePage}>Вперед</Button>
+            <Button onClick={increasePage} disabled={currentPage === maxPage}>
+              Вперед
+            </Button>
           </td>
         </tr>
       </tfoot>

@@ -10,6 +10,12 @@ export async function getLinks(params: string) {
     headers,
   });
 
+  const count = res.headers.get("x-total-count");
+
+  if (count) {
+    localStorage.setItem("totalCount", count.toString());
+  }
+
   return res.json();
 }
 
