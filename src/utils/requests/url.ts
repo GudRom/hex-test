@@ -19,7 +19,7 @@ export async function getLinks(params: string) {
   return res.json();
 }
 
-export async function shortLink(link: string) {
+export async function createShortLink(link: string) {
   const res = await fetch(`${BASE}${shorterUrl.SQUEEZE}?link=${link}`, {
     method: "POST",
     headers,
